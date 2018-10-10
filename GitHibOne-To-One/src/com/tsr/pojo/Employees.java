@@ -18,6 +18,7 @@ public class Employees
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE , generator="EmpGen")
 	@SequenceGenerator(name="EmpGen" , sequenceName="EMPLOYEES_SEQ" , allocationSize=1)
+	//allocatedSize value should match with sequenceGenerator incrementBy value
 	@Column(name="EMPLOYEE_ID")
 	private int empId;
 	
@@ -50,6 +51,33 @@ public class Employees
 	
 	@Column(name="DEPARTMENT_ID")
 	private int deptId;
+
+	
+	public Employees() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	
+	public Employees(String fName, String lName, String email, String phoneNo, Date hireDate, int jobId, BigDecimal sal,
+			double commissionPct, int managerId, int deptId) {
+		super();
+		this.fName = fName;
+		this.lName = lName;
+		this.email = email;
+		this.phoneNo = phoneNo;
+		this.hireDate = hireDate;
+		this.jobId = jobId;
+		this.sal = sal;
+		this.commissionPct = commissionPct;
+		this.managerId = managerId;
+		this.deptId = deptId;
+	}
+
+
+
 
 	public int getEmpId() {
 		return empId;
@@ -137,6 +165,13 @@ public class Employees
 
 	public void setDeptId(int deptId) {
 		this.deptId = deptId;
+	}
+
+	@Override
+	public String toString() {
+		return "Employees [empId=" + empId + ", fName=" + fName + ", lName=" + lName + ", email=" + email + ", phoneNo="
+				+ phoneNo + ", hireDate=" + hireDate + ", jobId=" + jobId + ", sal=" + sal + ", commissionPct="
+				+ commissionPct + ", managerId=" + managerId + ", deptId=" + deptId + "]";
 	}
 	
 	
