@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -18,7 +19,6 @@ public class Employees
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE , generator="EmpGen")
 	@SequenceGenerator(name="EmpGen" , sequenceName="EMPLOYEES_SEQ" , allocationSize=1)
-	//allocatedSize value should match with sequenceGenerator incrementBy value
 	@Column(name="EMPLOYEE_ID")
 	private int empId;
 	
@@ -38,31 +38,27 @@ public class Employees
 	private Date hireDate;
 	
 	@Column(name="JOB_ID")
-	private int jobId;
+	private String jobId;
 	
 	@Column(name="SALARY")
 	private BigDecimal sal;
 	
 	@Column(name="COMMISSION_PCT")
-	private double commissionPct;
+	private Double commissionPct;
 	
 	@Column(name="MANAGER_ID")
-	private int managerId;
+	private Integer managerId;
 	
 	@Column(name="DEPARTMENT_ID")
-	private int deptId;
-
+	private Integer deptId;
 	
 	public Employees() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-	
-	
-	public Employees(String fName, String lName, String email, String phoneNo, Date hireDate, int jobId, BigDecimal sal,
-			double commissionPct, int managerId, int deptId) {
+	public Employees(String fName, String lName, String email, String phoneNo, Date hireDate, String jobId, BigDecimal sal,
+			Double commissionPct, Integer managerId, Integer deptId) {
 		super();
 		this.fName = fName;
 		this.lName = lName;
@@ -75,9 +71,6 @@ public class Employees
 		this.managerId = managerId;
 		this.deptId = deptId;
 	}
-
-
-
 
 	public int getEmpId() {
 		return empId;
@@ -127,11 +120,11 @@ public class Employees
 		this.hireDate = hireDate;
 	}
 
-	public int getJobId() {
+	public String getJobId() {
 		return jobId;
 	}
 
-	public void setJobId(int jobId) {
+	public void setJobId(String jobId) {
 		this.jobId = jobId;
 	}
 
@@ -143,27 +136,27 @@ public class Employees
 		this.sal = sal;
 	}
 
-	public double getCommissionPct() {
+	public Double getCommissionPct() {
 		return commissionPct;
 	}
 
-	public void setCommissionPct(double commissionPct) {
+	public void setCommissionPct(Double commissionPct) {
 		this.commissionPct = commissionPct;
 	}
 
-	public int getManagerId() {
+	public Integer getManagerId() {
 		return managerId;
 	}
 
-	public void setManagerId(int managerId) {
+	public void setManagerId(Integer managerId) {
 		this.managerId = managerId;
 	}
 
-	public int getDeptId() {
+	public Integer getDeptId() {
 		return deptId;
 	}
 
-	public void setDeptId(int deptId) {
+	public void setDeptId(Integer deptId) {
 		this.deptId = deptId;
 	}
 
