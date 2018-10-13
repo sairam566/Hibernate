@@ -1,9 +1,12 @@
 package com.tsr.action;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.tsr.output.OutputTo;
 import com.tsr.pojo.Employees;
 
 public class RetriveEmployee {
@@ -22,14 +25,14 @@ public class RetriveEmployee {
 			session.beginTransaction();
 			
 			//create an id to retrieve an employee
-			int id=100;
+			//int id=100;
 			
 			//Retrieve Employee obj from Employees table
-			Employees employee = session.get(Employees.class, id);
+			List<Employees> employees = session.createQuery("from Employees").list();
 			
-			if(employee!=null)
+			if(employees!=null)
 			{
-				System.out.println(employee);
+				new OutputTo().generateTxtFile(employees);
 			}
 			
 			
