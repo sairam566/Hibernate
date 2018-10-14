@@ -32,7 +32,11 @@ public class RetriveEmployee {
 			
 			if(employees!=null)
 			{
-				new OutputTo().generateTxtFile(employees);
+				//To output txt file
+				//new OutputTo().generateTxtFile(employees);
+				
+				//To output PDF file
+				new OutputTo().generatePDFFile(employees);
 			}
 			
 			
