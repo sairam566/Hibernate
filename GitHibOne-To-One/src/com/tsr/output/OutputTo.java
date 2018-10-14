@@ -129,8 +129,9 @@ public class OutputTo {
 					table.addCell(""+(null!=emp.getCommissionPct() ? emp.getCommissionPct() : "NO Data"));
 					table.addCell(""+(null!=emp.getManagerId() ? emp.getManagerId() : "NO Data"));
 					table.addCell(""+(null!=emp.getDeptId() ? emp.getDeptId() : "NO Data"));
-					section.add(table);
+					
 				}
+				section.add(table);
 			}
 			doc.add(section);
 		} catch (FileNotFoundException e) {
