@@ -8,11 +8,14 @@ import java.util.List;
 
 import org.hibernate.Session;
 
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chapter;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Font.FontFamily;
+import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Section;
@@ -73,7 +76,7 @@ public class OutputTo {
 		//give the location where to store the PDF file.
 		String FILE = "C:\\Users\\Maneesh\\git\\Hibernate\\PDF\\EmpDetails.pdf";
 		
-		Document doc = new Document();
+		Document doc = new Document(PageSize.A4,0,0,0,0);
 		
 		try {
 			
@@ -89,30 +92,33 @@ public class OutputTo {
 			
 			PdfPTable table = new PdfPTable(11);
 			
+			//adding data alignment
+			table.setWidthPercentage(100);
+			table.setSpacingBefore(0f);
+			table.setSpacingAfter(0f);
+			
+			
 			//creation of table header
-			PdfPCell c1 = new PdfPCell(new Phrase("EMPLOYEE_ID"));
-			table.addCell(c1);
-			PdfPCell c2 = new PdfPCell(new Phrase("FIRST_NAME"));
-			table.addCell(c2);
-			PdfPCell c3 = new PdfPCell(new Phrase("LAST_NAME"));
-			table.addCell(c3);
-			PdfPCell c4 = new PdfPCell(new Phrase("EMAIL"));
-			table.addCell(c4);
-			PdfPCell c5 = new PdfPCell(new Phrase("PHONE_NUMBER"));
-			table.addCell(c5);
-			PdfPCell c6 = new PdfPCell(new Phrase("HIRE_DATE"));
-			table.addCell(c6);
-			PdfPCell c7 = new PdfPCell(new Phrase("JOB_ID"));
-			table.addCell(c7);
-			PdfPCell c8 = new PdfPCell(new Phrase("SALARY"));
-			table.addCell(c8);
-			PdfPCell c9 = new PdfPCell(new Phrase("COMMISSION_PCT"));
-			table.addCell(c9);
-			PdfPCell c10 = new PdfPCell(new Phrase("MANAGER_ID"));
-			table.addCell(c10);
-			PdfPCell c11 = new PdfPCell(new Phrase("DEPARTMENT_ID"));
-			table.addCell(c11);
+			PdfPCell cell = new PdfPCell();
+			cell.setColspan(11);
+	        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+	        cell.setPadding(5.0f);
+	        cell.setBackgroundColor(new BaseColor(140, 221, 8));
+	        table.addCell(cell);
+			
+			table.addCell("EMPLOYEE_ID");
+			table.addCell("FIRST_NAME");
+			table.addCell("LAST_NAME");
+			table.addCell("EMAIL");
+			table.addCell("PHONE_NUMBER");
+			table.addCell("HIRE_DATE");
+			table.addCell("JOB_ID");
+			table.addCell("SALARY");
+			table.addCell("COMMISSION_PCT");
+			table.addCell("MANAGER_ID");
+			table.addCell("DEPARTMENT_ID");
 			table.setHeaderRows(1);
+			table.setSkipFirstHeader(true);
 			
 			if(EmpList!=null){
 				for(int i=0 ; i<EmpList.size();i++)
@@ -144,13 +150,6 @@ public class OutputTo {
 			doc.close();
 		}
 		
-		
-		
-		
-		
-		
 	}
-
-	
 
 }
