@@ -4,9 +4,14 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
-
-import org.hibernate.Session;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chapter;
@@ -150,6 +155,50 @@ public class OutputTo {
 			doc.close();
 		}
 		
+	}
+	
+	
+	public static void generateEmail(List<Employees> EmpList)
+	{
+		try{
+		 String host ="smtp.gmail.com" ;
+         String user = "saisurya319@gmail.com";
+         String pass = "Vennela@007";
+         String to = "vennela167@gmail.com";
+         String from = "thadisairam@gmail.com";
+         String subject = "Hello Vennela.ch";
+         String messageText = "Welcome";
+         boolean sessionDebug = false;
+         
+		Properties properties = System.getProperties();
+		
+		properties.put("mail.smtp.starttls.enable", "true");
+		properties.put("mail.smpt.host", host);
+		properties.put("mail.smpt.auth", "true");
+		properties.put("mail.smpt.port", "587");
+		properties.put("mail.smtp.starttls.required", "true");
+		
+		//java.security.Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+        Session mailSession = Session.getDefaultInstance(properties, null);
+        mailSession.setDebug(sessionDebug);
+        Message msg = new MimeMessage(mailSession);
+        msg.setFrom(new InternetAddress(from));
+        InternetAddress[] address = {new InternetAddress(to)};
+        msg.setRecipients(Message.RecipientType.TO, address);
+        msg.setSubject(subject); 
+        msg.setSentDate(new Date());
+        msg.setText(messageText);
+
+       Transport transport=mailSession.getTransport("smtp");
+       transport.connect(host, user, pass);
+       transport.sendMessage(msg, msg.getAllRecipients());
+       transport.close();
+       System.out.println("message send successfully");
+	 }catch(Exception ex)
+    {
+        System.out.println(ex);
+    }
+
 	}
 
 }
