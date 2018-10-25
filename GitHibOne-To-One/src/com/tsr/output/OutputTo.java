@@ -13,6 +13,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chapter;
 import com.itextpdf.text.Document;
@@ -162,12 +164,12 @@ public class OutputTo {
 	{
 		try{
 		 String host ="smtp.gmail.com" ;
-         String user = "saisurya319@gmail.com";
-         String pass = "Vennela@007";
-         String to = "vennela167@gmail.com";
-         String from = "thadisairam@gmail.com";
-         String subject = "Hello Vennela.ch";
-         String messageText = "Welcome";
+         String user = "";
+         String pass = "";
+         String to = "";
+         String from = "";
+         String subject = "";
+         String messageText = "";
          boolean sessionDebug = false;
          
 		Properties properties = System.getProperties();
@@ -200,5 +202,11 @@ public class OutputTo {
     }
 
 	}
-
+	
+	public static void generateExcleFile(List<Employees> EmpList)
+	{
+		HSSFWorkbook workBook = new HSSFWorkbook();
+		
+		
+	}
 }
