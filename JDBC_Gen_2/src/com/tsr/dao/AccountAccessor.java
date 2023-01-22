@@ -1,12 +1,12 @@
 package com.tsr.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.tsr.dto.Account;
+import com.tsr.utils.SingletoneConnectionManager;
 
 public class AccountAccessor {
 	
@@ -28,7 +28,8 @@ public class AccountAccessor {
 		ResultSet rs = null;
 
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hibernate", "sairam", "sairam");
+			//con = ConnectionManager.getConnection();
+			con = SingletoneConnectionManager.getInstance().getConnection();
 			ps = con.prepareStatement(SQL_FIND_ACCOUNT_BY_ACCOUNTNO);
 			ps.setInt(1, accountNo);
 			rs = ps.executeQuery();
@@ -80,7 +81,8 @@ public class AccountAccessor {
 		ResultSet rs = null;
 
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hibernate", "sairam", "sairam");
+			//con = ConnectionManager.getConnection();
+			con = SingletoneConnectionManager.getInstance().getConnection();
 			ps = con.prepareStatement(SQL_FIND_ACCOUNT_BY_MOBILENO);
 			ps.setString(1, mobileNo);
 			rs = ps.executeQuery();
