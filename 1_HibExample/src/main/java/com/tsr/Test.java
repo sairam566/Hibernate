@@ -15,7 +15,7 @@ public class Test {
 		
 		Account account = session.get(Account.class, 1);
 		
-		System.out.println("Account Details: \n"+account);
+		System.out.println("Account Details: \n "+account);
 	}
 
 }
