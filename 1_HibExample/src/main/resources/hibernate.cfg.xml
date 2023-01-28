@@ -9,6 +9,6 @@
     	<property name="connection.password">sairam</property>
     	<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
     	
-    	<mapping resource="com/tsr/entitys/hibernate.hbm.xml"/>
+    	<mapping resource="com/tsr/entitys/Account.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
