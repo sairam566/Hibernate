@@ -25,7 +25,8 @@ public class ProductDAO {
 			e.printStackTrace();
 		}finally {
 			if(transaction != null && flag) {
-				transaction.commit();
+				// Note: If we get error while committing then session is not closed.
+				transaction.commit(); 
 				System.out.println("Inserted Sussess");
 			}else {
 				transaction.rollback();
