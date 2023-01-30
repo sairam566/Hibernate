@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.propbootstrap.entityes.Address;
-import com.propbootstrap.helper.SessionFactoryRegistory;
+import com.propbootstrap.helper.PropertySessionFactoryRegistory;
 
 public class AddressDAO {
 
@@ -14,7 +14,7 @@ public class AddressDAO {
 		Address address = null;
 		Session session = null;
 		try {
-			factory = SessionFactoryRegistory.getSessionFactory();
+			factory = PropertySessionFactoryRegistory.getSessionFactory();
 			session = factory.openSession();
 			address = session.get(Address.class, addressNo);
 		} catch (HibernateException e) {

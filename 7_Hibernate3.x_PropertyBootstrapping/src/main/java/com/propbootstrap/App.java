@@ -2,7 +2,7 @@ package com.propbootstrap;
 
 import com.propbootstrap.dao.AddressDAO;
 import com.propbootstrap.entityes.Address;
-import com.propbootstrap.helper.SessionFactoryRegistory;
+import com.propbootstrap.helper.PropertySessionFactoryRegistory;
 
 public class App 
 {
@@ -15,7 +15,7 @@ public class App
 			address = addressDAO.getAddressById(1);
 			System.out.println("Current Address \n"+address);
 		} finally {
-			SessionFactoryRegistory.closeSessionFactory();
+			PropertySessionFactoryRegistory.closeSessionFactory();
 		}
     }
 }

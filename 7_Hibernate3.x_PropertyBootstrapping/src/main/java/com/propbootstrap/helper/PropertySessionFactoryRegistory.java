@@ -4,7 +4,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class SessionFactoryRegistory {
+public class PropertySessionFactoryRegistory {
 
 	private static SessionFactory factory;
 	
