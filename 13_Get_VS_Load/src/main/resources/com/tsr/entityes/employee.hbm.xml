@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.tsr.entityes.Employee" table="employee">
+		<id name="employeeNo" column="employee_id"/>
+		<property name="employeeName" column="employee_name"/>
+		<property name="employeeDept" column="employee_dept"/>
+		<property name="employeeDOJ" column="employee_doj"/>
+		<property name="employeeSalary" column="employee_sal"/>
+	</class>
+</hibernate-mapping>
