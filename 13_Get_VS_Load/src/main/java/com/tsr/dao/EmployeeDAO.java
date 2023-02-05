@@ -35,6 +35,7 @@ public class EmployeeDAO {
 			session = factory.openSession();
 			employee = session.load(Employee.class, empId);
 			System.out.println(employee.getClass().getName()); //com.tsr.entityes.Employee$HibernateProxy$5gbHTzyX
+			System.out.println(employee.getEmployeeName());
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}finally {
