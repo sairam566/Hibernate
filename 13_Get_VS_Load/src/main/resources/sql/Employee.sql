@@ -1,4 +1,4 @@
-employeeNameCREATE TABLE `hibernate`.`employee` (
+CREATE TABLE `hibernate`.`employee` (
   `employee_id` INT NOT NULL AUTO_INCREMENT,
   `employee_name` VARCHAR(45) NOT NULL,
   `employee_dept` VARCHAR(45) NOT NULL,
