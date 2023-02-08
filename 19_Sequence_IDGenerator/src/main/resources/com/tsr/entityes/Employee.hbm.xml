@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.tsr.entityes.Employee" table="employee">
+		<id name="employeeNo" column="EMPLOYEE_ID">
+			<generator class="sequence">
+				<param name="sequence_name">employee_seq</param>
+			</generator>
+		</id>
+		<property name="employeeName" column="EMPLOYEE_NAME"/>
+		<property name="employeeDept" column="EMPLOYEE_DEPT"/>
+		<property name="employeeDOJ" column="EMPLOYEE_DOJ"/>
+		<property name="employeeSalary" column="EMPLOYEE_SAL"/>
+	</class>
+</hibernate-mapping>
