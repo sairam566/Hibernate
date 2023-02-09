@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.tsr.entityes.Vehicles" table="vehicles">
+		<id name="vehicleNo" column="VEHICLE_NO">
+			<generator class="select">
+				<param name="key">registrationNo</param>
+			</generator>
+		</id>
+		<property name="modelName" column="MODEL_NAME"/>
+		<property name="manufacturer" column="MANUFACTURER"/>
+		<property name="registrationNo" column="REGISTRATION_NO"/>
+		<property name="color" column="COLOR"/>
+		<property name="fuelType" column="FUEL_TYPE"/>
+		<property name="leaseAmount" column="LEASE_AMOUNT"/>
+	</class>
+</hibernate-mapping>
