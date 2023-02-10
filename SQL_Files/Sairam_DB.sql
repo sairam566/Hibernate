@@ -5,4 +5,6 @@ desc employee;
 
 select * from vehicles;
 desc vehicles;
+desc bus;
+select * from bus;
 select rawtohex(sys_guid()) from dual;
