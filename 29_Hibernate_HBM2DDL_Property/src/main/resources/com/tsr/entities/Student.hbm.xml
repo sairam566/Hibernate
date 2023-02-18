@@ -9,5 +9,6 @@
 		<property name="name"/>
 		<property name="joiningDate" column="joining_Date"/>
 		<property name="grade"/>
+		<property name="classTeacher" column="class_Teacher"/>
 	</class>
 </hibernate-mapping>
