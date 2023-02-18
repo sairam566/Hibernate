@@ -1,5 +1,7 @@
 package com.tsr.dao;
 
+import java.util.Date;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -64,7 +66,7 @@ public class StudentDAO {
 		}
 	}
 	
-	public void addStudent_SAVE_OR_UPDATE(Student student) {
+	public void addStudent_SAVE_OR_UPDATE_ThatInsert(Student student) {
 
 		SessionFactory factory = null;
 		Session session = null;
@@ -73,10 +75,137 @@ public class StudentDAO {
 			factory = SessionFactoryRegistory.getSessionFactory();
 			session = factory.openSession();
 			transaction = session.beginTransaction();
-			student.setStudentId(4);
 			session.saveOrUpdate(student);
 			
 			System.out.println(student);
+			transaction.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			transaction.rollback();
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
+	}
+	
+	public void addStudent_SAVE_OR_UPDATE_ThatUpdate(Student student) {
+
+		SessionFactory factory = null;
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			factory = SessionFactoryRegistory.getSessionFactory();
+			session = factory.openSession();
+			transaction = session.beginTransaction();
+			session.saveOrUpdate(student);
+			
+			System.out.println(student);
+			transaction.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			transaction.rollback();
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
+	}
+	
+	public void addStudent_Partial_UPDATE() {
+
+		SessionFactory factory = null;
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			factory = SessionFactoryRegistory.getSessionFactory();
+			session = factory.openSession();
+			Student stu = session.get(Student.class, 4);
+			System.out.println("Before Update: "+stu);
+			transaction = session.beginTransaction();
+			stu.setName("TSR");
+			session.update(stu);
+			
+			System.out.println("After Update: "+stu);
+			transaction.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			transaction.rollback();
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
+	}
+	
+	public void addStudent_Full_UPDATE() {
+
+		SessionFactory factory = null;
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			factory = SessionFactoryRegistory.getSessionFactory();
+			session = factory.openSession();
+			Student student = new Student();
+			student.setStudentId(4);
+			student.setGrade("XXXXXXXX");
+			student.setJoiningDate(new Date());
+			student.setName("Ramana");
+			student.setClassTeacher("Full UPDATE");
+			transaction = session.beginTransaction();
+			
+			session.update(student);
+			
+			System.out.println(" Update: "+student);
+			transaction.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			transaction.rollback();
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
+	}
+	
+	public void merge(Student student) {
+
+		SessionFactory factory = null;
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			factory = SessionFactoryRegistory.getSessionFactory();
+			session = factory.openSession();
+			Student stu = session.get(Student.class, 5);
+			transaction = session.beginTransaction();
+			
+			session.merge(student);
+			
+			System.out.println(student);
+			transaction.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			transaction.rollback();
+		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
+	}
+	
+	public void detete(int studentID) {
+
+		SessionFactory factory = null;
+		Session session = null;
+		Transaction transaction = null;
+		try {
+			factory = SessionFactoryRegistory.getSessionFactory();
+			session = factory.openSession();
+			Student stu = session.get(Student.class, studentID);
+			transaction = session.beginTransaction();
+			
+			session.delete(stu);
+			
 			transaction.commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
