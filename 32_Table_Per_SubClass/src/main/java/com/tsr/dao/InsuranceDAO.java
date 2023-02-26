@@ -112,7 +112,7 @@ public class InsuranceDAO {
 		}
 	}
 	
-	public void getSuperClassObjInSubClassRef(int PKValue) {
+	public void getSubClassObjIntoSuperClassRefType(int PKValue) {
 		SessionFactory factory = null;
 		Session session = null;
 		try {

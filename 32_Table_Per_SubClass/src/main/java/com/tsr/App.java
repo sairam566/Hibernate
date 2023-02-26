@@ -15,7 +15,7 @@ public class App
 			// addAccidentalInsurancePlan();
 			// getInsurancePlan();
 			// getAccidentalInsurancePlan();
-			 getSuperClassObjInSubClassRef();
+			getSubClassObjIntoSuperClassRefType();
 		} finally {
 			SessionFactoryRegistory.closeSessionFactory();
 		}
@@ -74,8 +74,8 @@ public class App
 		dao.getAccidentalInsurancePlan(3);
 	}
 	
-	public static void getSuperClassObjInSubClassRef() {
+	public static void getSubClassObjIntoSuperClassRefType() {
 		InsuranceDAO dao = new InsuranceDAO();
-		dao.getSuperClassObjInSubClassRef(3);
+		dao.getSubClassObjIntoSuperClassRefType(3);
 	}
 }
