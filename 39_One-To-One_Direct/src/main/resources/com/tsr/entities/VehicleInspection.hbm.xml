@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.tsr.entities.VehicleInspection" table="Vehicle_Inspection">
+		<id name="inspectionNo" column="inspection_No">
+			<generator class="increment"/>
+		</id>
+		<property name="manufacturer"/>
+		<property name="engineNo" column="engine_no"/>
+		<property name="chasisNo" column="chasis_no"/>
+		<property name="modelName" column="model_name"/>
+		<property name="purchaseDate" column="purchase_date"/>
+		<property name="rtaRegistrationNo" column="rta_registration_no"/>
+		<property name="vehicleType" column="vehicle_type"></property>
+	</class>
+</hibernate-mapping>

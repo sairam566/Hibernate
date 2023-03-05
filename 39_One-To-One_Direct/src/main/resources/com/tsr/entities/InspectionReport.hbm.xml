@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.tsr.entities.InspectionReport"  table="inspection_report">
+		<id name="inspectionNo" column="inspection_no">
+			<generator class="foreign">
+				<param name="property">vehicleInspection</param>
+			</generator>
+		</id>
+		<property name="agentName" column="agent_name"/>
+		<property name="description"/>
+		<property name="observations"/>
+		<property name="rating"/>
+		<property name="reportDate" column="report_date"/>
+		<property name="reportExpiryDate" column="report_expiry_date"/>
+		<property name="valuation"/>
+		<one-to-one name="vehicleInspection" />
+	</class>
+</hibernate-mapping>
