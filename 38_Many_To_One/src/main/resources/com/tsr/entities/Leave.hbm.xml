@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.tsr.entities.Leave" table="leave_tb">
+		<id name="leaveNo" column="leave_no">
+			<generator class="increment"></generator>
+		</id>
+		<property name="description"/>
+		<property name="startDate" column="start_date"/>
+		<property name="endDate" column="end_date"/>
+		<property name="leaveType" column="leave_type"/>
+		<property name="status" column="leave_status"/>
+		<many-to-one name="associate" column="associate_no" not-null="true"/>
+	</class>
+</hibernate-mapping>
