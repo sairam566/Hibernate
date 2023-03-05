@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import com.tsr.dao.LeaveDao;
 import com.tsr.entities.Associate;
 import com.tsr.entities.Leave;
+import com.tsr.helper.SessionFactoryRegistory;
 
 public class App 
 {
@@ -14,9 +15,9 @@ public class App
 		//	addAssociate();
         //	addLeave();
         	getLeave();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		} finally {
+			SessionFactoryRegistory.closeSessionFactory();
+		} 
     }
 
 	private static void addAssociate() {
