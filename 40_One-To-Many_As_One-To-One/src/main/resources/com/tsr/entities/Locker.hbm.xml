@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.tsr.entities.Locker" table="locker">
+		<id name="lockerNo" column="locker_no">
+			<generator class="increment"/>
+		</id>
+		<property name="charges"/>
+		<property name="dimensions"/>
+		<property name="keyNo" column="key_no"/>
+		<many-to-one name="account" column="ac_no" unique="true" not-null="true"/>
+	</class>
+</hibernate-mapping>
