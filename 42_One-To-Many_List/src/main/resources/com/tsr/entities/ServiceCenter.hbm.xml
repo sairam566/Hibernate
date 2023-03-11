@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.tsr.entities.ServiceCenter" table="service_center">
+		<id name="serviceCenterNo" column="service_center_no">
+			<generator class="increment"/>
+		</id>
+		<property name="branchManager" column="branch_manager"/>
+		<property name="company"/>
+		<property name="contactNo" column="contact_no"/>
+		<property name="emailAddress" column="email_Address"/>
+		<property name="location"/>
+		<property name="serviceCenterName" column="service_center_name"/>
+		<!-- Now to map association relationship between ServiceCenter and Token -->
+		<list name="tokens">
+			<key column="service_center_no"/>
+			<list-index column="token_seq_no" base="1"/>
+			<one-to-many class="com.tsr.entities.Token" />
+		</list>
+	</class>
+</hibernate-mapping>
