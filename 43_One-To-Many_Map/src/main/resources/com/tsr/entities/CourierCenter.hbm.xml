@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.tsr.entities.CourierCenter" table="Courier_Center">
+		<id name="courierCenterNo" column="courier_ctr_no">
+			<generator class="increment"/>
+		</id>
+		<property name="centerName" column="center_nm"/>
+		<property name="contactNo" column="contact_no"/>
+		<property name="emailAddress" column="email"/>
+		<property name="inChargeName" column="in_charge_no"/>
+		<property name="location"/>
+		<map name="parcelMap">
+			<key column="courier_ctr_no"/>
+			<map-key column="awb_no" type="string"/>
+			<one-to-many class="com.tsr.entities.Parcel"/>
+		</map>
+	</class>
+</hibernate-mapping>
