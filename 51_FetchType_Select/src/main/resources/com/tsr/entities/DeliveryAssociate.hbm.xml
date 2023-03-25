@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.tsr.entities.DeliveryAssociate" table="delivery_associate">
+		<id name="deliveryAssociateNo" column="delivery_associate_no">
+			<generator class="increment"/>
+		</id>
+		<property name="associateName" column="associate_no"/>
+		<property name="contactNo" column="contact_no"/>
+		<property name="designation"/>
+		<property name="experience"/>
+		<set name="parcels" inverse="true" fetch="select">
+			<key column="delivery_associate_no"/>
+			<one-to-many class="com.tsr.entities.Parcel"/>
+		</set>
+	</class>
+</hibernate-mapping>
