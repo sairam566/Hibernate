@@ -9,9 +9,21 @@
 		<property name="contactNo" column="contact_no"/>
 		<property name="designation"/>
 		<property name="experience"/>
-		<set name="parcels" inverse="true" fetch="select">
+		
+		<!-- <set name="parcels" inverse="true" fetch="select">
+			<key column="delivery_associate_no"/>
+			<one-to-many class="com.tsr.entities.Parcel"/>
+		</set> -->
+		
+		<!-- <set name="parcels" inverse="true" fetch="join">
+			<key column="delivery_associate_no"/>
+			<one-to-many class="com.tsr.entities.Parcel"/>
+		</set> -->
+		
+		<set name="parcels" inverse="true" fetch="subselect">
 			<key column="delivery_associate_no"/>
 			<one-to-many class="com.tsr.entities.Parcel"/>
 		</set>
+		
 	</class>
 </hibernate-mapping>

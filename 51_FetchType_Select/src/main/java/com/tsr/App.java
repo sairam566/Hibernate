@@ -12,7 +12,27 @@ public class App {
 	public static void main(String[] args) {
 		try {
 			//addParcelAndDeliveryAssociate();
-			getDeliveryAssociate();
+			
+			/**
+			 * Before you uncomment and run below method 
+			 * Uncomment DeliveryAssociate.hbm.xml 
+			 * <set name="parcels" inverse="true" fetch="select">
+			 */
+			//getDeliveryAssociateSelect();
+			
+			/**
+			 * Before you uncomment and run below method 
+			 * Uncomment DeliveryAssociate.hbm.xml 
+			 * <set name="parcels" inverse="true" fetch="join">
+			 */
+			//getDeliveryAssociateJoin();
+			
+			/**
+			 * Before you uncomment and run below method 
+			 * Uncomment DeliveryAssociate.hbm.xml 
+			 * <set name="parcels" inverse="true" fetch="subselect">
+			 */
+			getDeliveryAssociateSubSelect();
 		} finally {
 			SessionFactoryRegistory.closeSessionFactory();
 		}
@@ -33,8 +53,18 @@ public class App {
 		dao.addParcelAndDeliveryAssociate(parcels, deliveryAssociate);
 	}
 	
-	public static void getDeliveryAssociate() {
+	public static void getDeliveryAssociateSelect() {
 		ParcelDAO dao = new ParcelDAO();
-		dao.getDeliveryAssociate(1);
+		dao.getDeliveryAssociateSelect(1);
+	}
+	
+	public static void getDeliveryAssociateJoin() {
+		ParcelDAO dao = new ParcelDAO();
+		dao.getDeliveryAssociateJoin(1);
+	}
+	
+	public static void getDeliveryAssociateSubSelect() {
+		ParcelDAO dao = new ParcelDAO();
+		dao.getDeliveryAssociateSubSelect(3);
 	}
 }
