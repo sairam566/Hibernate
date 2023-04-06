@@ -9,7 +9,8 @@ public class App {
 			
 			//getAllPArcels_QUERY();
 			//getAllParcels_TypedQuery();
-			getAllParcels_Weight_gt_20();
+			//getAllParcels_Weight_gt_20();
+			getDeliveryAssociatesCount();
 			
 		} finally {
 			SessionFactoryRegistory.closeSessionFactory();
@@ -29,5 +30,10 @@ public class App {
 	public static void getAllParcels_Weight_gt_20() {
 		ParcelDAO dao = new ParcelDAO();
 		dao.getAllParcels_Weight_gt_20();
+	}
+	
+	public static void getDeliveryAssociatesCount() {
+		ParcelDAO dao = new ParcelDAO();
+		dao.getDeliveryAssociatesCount();
 	}
 }
