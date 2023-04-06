@@ -9,6 +9,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import com.tsr.entities.DeliveryAssociate;
 import com.tsr.entities.Parcel;
 import com.tsr.helper.SessionFactoryRegistory;
 
@@ -69,6 +70,24 @@ public class ParcelDAO {
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
+			if (session != null && session.isOpen()) {
+				session.close();
+			}
+		}
+	}
+
+	public void getDeliveryAssociatesCount() {
+		SessionFactory factory = null;
+		Session session = null;
+		try {
+			factory = SessionFactoryRegistory.getSessionFactory();
+			session = factory.openSession();
+			TypedQuery<Long> typedQuery = session.createQuery("select count(*) from DeliveryAssociate",Long.class);
+			 long count = typedQuery.getResultList().get(0);
+			 System.out.println("Count: "+count);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
 			if (session != null && session.isOpen()) {
 				session.close();
 			}
